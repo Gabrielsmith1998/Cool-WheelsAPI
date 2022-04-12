@@ -52,5 +52,105 @@ namespace Cool_WheelsAPI.Repositories
                 }
             }
         }
+
+        public Buyer GetBuyerById(int id)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT Id,
+                                               [Name]
+                                        FROM Buyer
+                                        WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Buyer buyer = new Buyer
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Name = reader.GetString(reader.GetOrdinal("Name"))
+                        };
+
+                        reader.Close();
+                        return buyer;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public void AddBuyer(Buyer buyer)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Buyer ([Name])
+                    OUTPUT INSERTED.ID
+                    VALUES (@name);
+                ";
+
+                    cmd.Parameters.AddWithValue("@name", buyer.Name);
+
+                    int id = (int)cmd.ExecuteScalar();
+
+                    buyer.Id = id;
+                }
+            }
+        }
+
+        public void UpdateBuyer(Buyer buyer)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE Buyer
+                            SET 
+                                [Name] = @name
+                            WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@name", buyer.Name);
+                    cmd.Parameters.AddWithValue("@id", buyer.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteBuyer(int buyerId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            DELETE FROM Buyer
+                            WHERE Id = @id
+                        ";
+
+                    cmd.Parameters.AddWithValue("@id", buyerId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
