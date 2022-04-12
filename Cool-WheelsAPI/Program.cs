@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IBuyerRepository, BuyerRepository>();
+builder.Services.AddTransient<ITrackRepository, TrackRepository>();
 
 var app = builder.Build();
 
