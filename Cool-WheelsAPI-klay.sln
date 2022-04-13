@@ -1,2 +1,0 @@
-﻿SELECT Id, [Name], Color, Year, Price, ImageUrl, BuyerId
-                        FROM Car
