@@ -8,12 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <Compile Remove="Repositroies\**" />
+    <Content Remove="Repositroies\**" />
+    <EmbeddedResource Remove="Repositroies\**" />
+    <None Remove="Repositroies\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositroies\" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
 </Project>
