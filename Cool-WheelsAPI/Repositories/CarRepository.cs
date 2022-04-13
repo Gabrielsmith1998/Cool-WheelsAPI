@@ -104,10 +104,12 @@ namespace Cool_WheelsAPI.Repositories
                 {
                     cmd.CommandText = @"
                     INSERT INTO Car ([Name], Color, Year, Price, ImageUrl, BuyerId)
-                    OUTPUT ISERTED.ID
-                    VALUES (@name, @price,@imageUrl, @buyerId)
+                    OUTPUT INSERTED.ID
+                    VALUES (@name, @color, @year, @price, @imageUrl, @buyerId)
                 ";
                     cmd.Parameters.AddWithValue("@name", car.Name);
+                    cmd.Parameters.AddWithValue("@color", car.Color);
+                    cmd.Parameters.AddWithValue("@year", car.Year);
                     cmd.Parameters.AddWithValue("@price", car.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", car.ImageUrl);
                     cmd.Parameters.AddWithValue("@buyerId", car.BuyerId);
@@ -128,16 +130,18 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.CommandText = @"
                     UPDATE Car
                     SET
-                        [Name] = 
-                        Color = 
-                        Year = 
-                        Price = 
-                        ImageUrl = 
-                        BuyerId =
+                        [Name] = '@name',
+                        Color = '@color',
+                        Year = @year,
+                        Price = @price,
+                        ImageUrl = @imageUrl,
+                        BuyerId = @buyerId
                     WHERE Id = @id
                 ";
 
                     cmd.Parameters.AddWithValue("@name", car.Name);
+                    cmd.Parameters.AddWithValue("@color", car.Color);
+                    cmd.Parameters.AddWithValue("@year", car.Year);
                     cmd.Parameters.AddWithValue("@price", car.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", car.ImageUrl);
                     cmd.Parameters.AddWithValue("@buyerId", car.BuyerId);

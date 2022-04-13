@@ -12,6 +12,11 @@ namespace Cool_WheelsAPI.Controllers
     {
         private readonly ICarRepository _carRepo;
         // GET: api/<CarController>
+        public CarController(ICarRepository carRepository)
+        {
+            _carRepo = carRepository;
+        }
+
         [HttpGet]
         public List<Car> GetAllCars()
         {
@@ -20,27 +25,53 @@ namespace Cool_WheelsAPI.Controllers
 
         // GET api/<CarController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Car Get(int id)
         {
-            return "value";
+            return _carRepo.GetCarById(id);
         }
 
         // POST api/<CarController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Car newCar)
         {
+            _carRepo.AddCar(newCar);
+            return Ok(newCar);
         }
 
         // PUT api/<CarController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Car car)
         {
+            if (id != car.Id)
+            {
+                return BadRequest();
+            }
+            var existingCar = _carRepo.GetCarById(id);
+            if (existingCar == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _carRepo.UpdateCar(car);
+                return NoContent();
+            }
         }
 
         // DELETE api/<CarController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var matchingCar = _carRepo.GetCarById(id);
+            if (matchingCar == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _carRepo.DeleteCar(matchingCar.Id);
+                return NoContent();
+            }
         }
     }
 }
