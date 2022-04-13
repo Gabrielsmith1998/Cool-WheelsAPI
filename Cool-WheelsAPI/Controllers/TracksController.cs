@@ -40,7 +40,7 @@ namespace Cool_WheelsAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateSpy(int id, Track track)
+        public IActionResult UpdateTrack(int id, Track track)
         {
             if (id != track.Id)
             {
