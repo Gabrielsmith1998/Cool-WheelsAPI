@@ -1,4 +1,5 @@
-﻿namespace CoolWheels.Models
+﻿namespace Cool_WheelsAPI.Models
+
 {
     public class Buyer
     {
