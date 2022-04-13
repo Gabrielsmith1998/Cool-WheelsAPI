@@ -130,8 +130,8 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.CommandText = @"
                     UPDATE Car
                     SET
-                        [Name] = '@name',
-                        Color = '@color',
+                        [Name] = @name,
+                        Color = @color,
                         Year = @year,
                         Price = @price,
                         ImageUrl = @imageUrl,
