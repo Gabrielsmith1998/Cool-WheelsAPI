@@ -1,0 +1,56 @@
+﻿USE MASTER
+GO
+
+IF NOT EXISTS (
+    SELECT [name]
+    FROM sys.databases
+    WHERE [name] = N'CoolWheelsMVC'
+)
+CREATE DATABASE CoolWheelsMVC
+GO
+
+USE CoolWheelsMVC
+GO
+
+
+DROP TABLE IF EXISTS Car;
+DROP TABLE IF EXISTS Track;
+DROP TABLE IF EXISTS Buyer;
+
+CREATE TABLE Car (
+	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+	Color VARCHAR(255) NOT NULL,
+	[Name] VARCHAR(255) NOT NULL,
+	[Year] VARCHAR(255) NOT NULL,
+	Price DECIMAL(17, 2) NOT NULL,
+	ImageUrl VARCHAR(255) NOT NULL,
+	BuyerId INTEGER NOT NULL,
+);
+
+CREATE TABLE Track (
+	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(255) NOT NULL,
+	Price DECIMAL(17, 2) NOT NULL,
+	ImageUrl VARCHAR(255) NOT NULL,
+	BuyerId INTEGER NOT NULL,
+);
+
+CREATE TABLE Buyer (
+	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(55) NOT NULL,
+);
+
+INSERT INTO Buyer ([Name]) VALUES ('Albert Chittaphong');
+INSERT INTO Buyer ([Name]) VALUES ('Klay Thacker');
+INSERT INTO Buyer ([Name]) VALUES ('Gabriel Smith');
+INSERT INTO Buyer ([Name]) VALUES ('Nathan Blackman');
+
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg', 1);
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Magenta', 'Rodger Dodger', '1974', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roger-dodger-magenta-1545149164.jpg', 2);
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Brown', 'Custom Camaro', '1968', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brown-white-camaro-hot-wheels-1545149679.jpg', 3);
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('White', 'Z-Whiz', '1977', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-z-whiz-datsun-jpg-1545151212.jpg', 4);
+
+INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg', 1);
+INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Total Turbo Takeover Track Set', $44.99, 'https://m.media-amazon.com/images/I/61nFfEDFRYL._AC_SX355_.jpg', 2);
+INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('City Robo T-Rex Ultimate Garage', $99.00, 'https://m.media-amazon.com/images/I/81nH0-AetxS._AC_SY355_.jpg', 3);
+INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Spin Storm Track Set', $54.99, 'https://m.media-amazon.com/images/I/71CqE9eToCL._AC_SX355_.jpg', 4);
