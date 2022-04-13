@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cool-WheelsAPI", "Cool-WheelsAPI\Cool-WheelsAPI.csproj", "{2D8B1BEA-71BD-4B53-B79E-F69CF1D85251}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Cool-WheelsClient", "..\Cool-WheelsClient\Cool-WheelsClient\Cool-WheelsClient.esproj", "{4E0539BE-6E11-4F15-8AD2-2965C2550468}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Cool-WheelsClient", "cool-wheelsclient\Cool-WheelsClient.esproj", "{4E0539BE-6E11-4F15-8AD2-2965C2550468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
