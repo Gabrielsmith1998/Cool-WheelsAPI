@@ -1,35 +1,25 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 // import PropTypes from 'prop-types';
-import Home from '.../Views/Home';
-import Profile from '..Views/Profile';
+import Home from '../Views/Home';
+import Profile from '../Views/Profile';
+import Buyers from '../Views/Buyers';
+import Cars from '../Views/Cars';
+import Tracks from '../Views/Tracks';
+import ItemView from '../Views/ItemView';
 
 //prone to be changed due to PropTypes
-export default function Routes({ }) {
+export default function PublicRoutes() {
     return (
         <div>
-            <Switch>
-                <Route
-                    exact
-                    path="/" />
-                <Home />
-                <Route
-                    exact
-                    path="/profile" />
-                <Profile />
-                <Route
-                    exact
-                    path="/cars" />
-                <Cars />
-                <Route
-                    exact
-                    path="/tracks" />
-                <Tracks />
-                <Route
-                    exact
-                    path="/item" />
-                <ItemView />
-            </Switch>
+            <Routes>
+                <Route exact path="/" element={<Home/>} />
+                <Route exact path="/profile" element={<Profile/>} />
+                <Route exact path="/cars" element={<Cars/>} />
+                <Route exact path="/tracks" element={<Tracks/>} />
+                <Route exact path="/item" element={<ItemView/>} />
+                <Route exact path="/buyers" element={<Buyers/>} />
+            </Routes>
         </div>
     );
 }
