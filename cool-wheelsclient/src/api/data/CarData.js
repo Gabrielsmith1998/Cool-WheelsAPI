@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getCars = () => new Promise((resolve, reject) => {
-    axios.get('https://localhost:7095/api/Car', config)
+    axios.get('https://localhost:7095/api/Car')
         .then((response) => {
             resolve(Object.values(response.data));
         })
