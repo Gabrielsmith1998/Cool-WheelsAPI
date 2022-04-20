@@ -7,7 +7,7 @@ export default function TrackCards({ tracks }) {
             <img class="card-img-top" src={tracks.imageUrl} alt="tracks" />
             <div class="card-body">
                 <h5 class="card-title">{tracks.name}</h5>
-                <p class="card-text">${tracks.price}</p>
+                <p class="card-text">{tracks.price}</p>
                 <button
                     type="button"
                     className="btn btn-danger"
