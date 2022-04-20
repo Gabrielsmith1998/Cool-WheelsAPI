@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import PropTypes from 'prop-types';
-import Home from '.../Views/Home';
+import Home from '../Views/Home';
 import Profile from '..Views/Profile';
+import Buyers from '../Views/Buyers';
 
 //prone to be changed due to PropTypes
 export default function Routes({ }) {
@@ -29,6 +30,7 @@ export default function Routes({ }) {
                     exact
                     path="/item" />
                 <ItemView />
+                <Route exact path="/buyers" component={Buyers} />
             </Switch>
         </div>
     );
