@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 export default function TrackCards({ tracks }) {
     return (
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src={tracks.imageUrl} alt="tracks" />
-            <div class="card-body">
-                <h5 class="card-title">{tracks.name}</h5>
-                <p class="card-text">{tracks.price}</p>
+        <div className="card">
+            <img src={tracks.imageUrl} alt="tracks" />
+            <div>
+                <h5>{tracks.name}</h5>
+                <p>{'$'}{tracks.price}</p>
                 <button
                     type="button"
                     className="btn btn-danger"
