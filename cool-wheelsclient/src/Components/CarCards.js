@@ -1,35 +1,35 @@
-import getCars from '../api/Date/';
+// import getCars from '../api/Date/CarData';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function CarCard({ cars, setCars }) {
-    const handleDelete = (method) => {
+export default function CarCard({ car }) {
+    /*const handleDelete = (method) => {
         if (method === 'delete') {
             deleteStuff(card.Id).then(() => {
                 getCars().then(setCars);
             });
         }
-    };
+    };*/
     return (
-        <div class="card" style={{ width: '18rem' }}>
-            <img src={cars.ImageUrl} class="card-img-top" alt="Car" />
-                <div class="card-body">
-                <h5 class="card-title">{cars.Name}</h5>
-                <p class="card-text">{cars.Color}</p>
-                <p class="card-text">{cars.Year}</p>
-                <p class="card-text">{cars.Price}</p>
-                <button
+        <div className="card">
+            <img src={car.imageUrl} className="card-img-top" alt="Car" />
+            <div className="card-body">
+                <h5 className="card-title">{car.name}</h5>
+                <p className="card-text">{car.color}</p>
+                <p className="card-text">{car.year}</p>
+                <p className="card-text">{car.price}</p>
+                {/*<button
                     onClick={() => handleDelete('Delete')}
                     className="btn btn-danger"
                     type="button"
                 >
                     Delete
-                </button>
+                </button>*/}
                 </div>
         </div>
         );
 };
 
-CarCard.PropTypes = {
-    cars: PropTypes.shape(PropTypes.obj).isRequired,
+CarCard.propTypes = {
+    car: PropTypes.shape(PropTypes.obj).isRequired,
 };
