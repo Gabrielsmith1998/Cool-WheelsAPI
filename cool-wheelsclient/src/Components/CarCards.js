@@ -1,6 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 // import getCars from '../api/Date/CarData';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 export default function CarCard({ car }) {
     /*const handleDelete = (method) => {
@@ -11,13 +12,17 @@ export default function CarCard({ car }) {
         }
     };*/
     return (
-        <div className="card">
+        <div className="card car-cards">
             <img src={car.imageUrl} className="card-img-top" alt="Car" />
             <div className="card-body">
                 <h5 className="card-title">{car.name}</h5>
                 <p className="card-text">{car.color}</p>
                 <p className="card-text">{car.year}</p>
                 <p className="card-text">{car.price}</p>
+                <div className="button-row">
+                <Link to={`/edit/${car.id}`} className="btn btn-warning">
+                    Edit
+                </Link>
                 {/*<button
                     onClick={() => handleDelete('Delete')}
                     className="btn btn-danger"
@@ -25,6 +30,7 @@ export default function CarCard({ car }) {
                 >
                     Delete
                 </button>*/}
+                </div>
                 </div>
         </div>
         );
