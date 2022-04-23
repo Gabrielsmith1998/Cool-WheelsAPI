@@ -15,7 +15,7 @@ const initialState = {
 
 export default function CarForm({ obj }) {
     const [formInput, setFormInput] = useState(initialState);
-    const navigate = useNavigate();
+    const history = useNavigate();
 
 
     useEffect(() => {
@@ -39,18 +39,17 @@ export default function CarForm({ obj }) {
         setFormInput(initialState);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
 
         if (obj.id) {
             updateCar(obj.id, formInput).then(() => {
                 resetForm();
-                navigate.push('/cars')
+                history('/cars')
             });
         } else {
             createCar({ ...formInput }).then(() => {
                 resetForm();
-                navigate.push('/cars')
+                history(/cars')
             });
         }
     };
@@ -94,7 +93,7 @@ export default function CarForm({ obj }) {
                             value={formInput.year}
                             onChange={handleChange}
                             required
-                            placeholder="Item Color"
+                            placeholder="Item Year"
                         />
                         <p />
                         <input
@@ -103,7 +102,7 @@ export default function CarForm({ obj }) {
                             value={formInput.price}
                             onChange={handleChange}
                             required
-                            placeholder="Item Color"
+                            placeholder="Item Price"
                         />
                         <p />
                         <input
