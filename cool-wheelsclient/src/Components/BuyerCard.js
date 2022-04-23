@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 export default function Buyer({ buyer }) {
   return (
     <div className="card">
-      Hello
       <img
         className="card-img-top"
         src={buyer.image}
         alt={buyer.name}
       />
-      <div className="card-body">
-        <h5 className="card-title">Albert</h5>
-      </div>
+      <h4>{buyer.name}</h4>
+      <h5>{buyer.userName} | {buyer.email}</h5>
+      <p>{buyer.about}</p>
     </div>
   );
 }
@@ -20,6 +19,9 @@ export default function Buyer({ buyer }) {
 Buyer.propTypes = {
   buyer: PropTypes.shape({
     image: PropTypes.string,
-    name: PropTypes.string
+    name: PropTypes.string,
+    userName: PropTypes.string,
+    email: PropTypes.string,
+    about: PropTypes.string
   }).isRequired
 }
