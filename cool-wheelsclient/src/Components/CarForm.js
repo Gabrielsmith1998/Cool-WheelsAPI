@@ -44,12 +44,12 @@ export default function CarForm({ obj }) {
         if (obj.id) {
             updateCar(obj.id, formInput).then(() => {
                 resetForm();
-                history('/cars')
+                history('Cars')
             });
         } else {
             createCar({ ...formInput }).then(() => {
                 resetForm();
-                history(/cars')
+                history('Cars')
             });
         }
     };
