@@ -1,5 +1,6 @@
 ﻿using Cool_WheelsAPI.Models;
 using Cool_WheelsAPI.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,6 +9,7 @@ namespace Cool_WheelsAPI.Controllers
 {
     [Route("api/tracks")]
     [ApiController]
+
     public class TracksController : ControllerBase
     {
         private readonly ITrackRepository _trackRepo;
@@ -35,11 +37,12 @@ namespace Cool_WheelsAPI.Controllers
         [HttpPost]
         public IActionResult Post(Track newTrack)
         {
-                _trackRepo.AddTrack(newTrack);
-                return Ok(newTrack);
+            _trackRepo.AddTrack(newTrack);
+            return Ok(newTrack);
         }
 
-        [HttpPut("{id}")]
+        [EnableCors("_myAllowSpecificOrigins")]
+        [HttpPatch("{id}")]
         public IActionResult UpdateTrack(int id, Track track)
         {
             if (id != track.Id)
