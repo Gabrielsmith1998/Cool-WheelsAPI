@@ -37,13 +37,18 @@ CREATE TABLE Track (
 
 CREATE TABLE Buyer (
 	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	[Name] VARCHAR(55) NOT NULL,
+	[Name] VARCHAR(255) NOT NULL,
+	UserName VARCHAR(255) NOT NULL,
+	Email VARCHAR(255) NOT NULL,
+	About VARCHAR(255) NOT NULL,
+	[Image] VARCHAR(255) NOT NULL,
+
 );
 
-INSERT INTO Buyer ([Name]) VALUES ('Albert Chittaphong');
-INSERT INTO Buyer ([Name]) VALUES ('Klay Thacker');
-INSERT INTO Buyer ([Name]) VALUES ('Gabriel Smith');
-INSERT INTO Buyer ([Name]) VALUES ('Nathan Blackman');
+INSERT INTO Buyer ([Name], UserName, Email, About, [Image]) VALUES ('Albert Chittaphong', 'albertchitta', 'albert123@gmail.com', 'Albert About Me', 'https://bootdey.com/img/Content/avatar/avatar2.png');
+INSERT INTO Buyer ([Name], UserName, Email, About, [Image]) VALUES ('Klay Thacker', 'KlayTT', 'klay123@gmail.com', 'Klay About Me', 'https://bootdey.com/img/Content/avatar/avatar6.png');
+INSERT INTO Buyer ([Name], UserName, Email, About, [Image]) VALUES ('Gabriel Smith', 'Gabrielsmith1998', 'gabriel123@gmail.com', 'Gabriel About Me', 'https://bootdey.com/img/Content/avatar/avatar4.png');
+INSERT INTO Buyer ([Name], UserName, Email, About, [Image]) VALUES ('Nathan Blackman', 'NathanBlackman', 'nathan123@gmail.com', 'Nathan About Me', 'https://bootdey.com/img/Content/avatar/avatar5.png');
 
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg', 1);
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Magenta', 'Rodger Dodger', '1974', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roger-dodger-magenta-1545149164.jpg', 2);
