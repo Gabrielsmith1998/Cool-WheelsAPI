@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import getBuyers from '../api/data/BuyerData';
+import BuyerCard from '../Components/BuyerCard';
 
 export default function Buyers() {
+  const [buyers, setBuyers] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    if (isMounted) {
+      getBuyers().then(setBuyers);
+    }
+
+    return () => {
+      isMounted = false;
+    }
+  }, []);
+
   return (
-    <h1>Buyers Page</h1>
+    <div>
+      <h1>Buyers Page</h1>
+      <div>
+        {buyers.length ? (
+          buyers.map((buyer) => (
+            <BuyerCard key={buyer.id} buyer={buyer} setBuyers={setBuyers} />
+          ))
+        ) : (
+          <h1>No Buyers</h1>
+        )}
+      </div>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ const dbUrl = 'https://localhost:7095/api/buyers';
 
 const getBuyers = () => new Promise((resolve, reject) => {
      axios
-         .get(`${dbUrl}`)
+        .get(`${dbUrl}`)
         .then((response) => {
             if (response.data) {
                 resolve(Object.values(response.data));
