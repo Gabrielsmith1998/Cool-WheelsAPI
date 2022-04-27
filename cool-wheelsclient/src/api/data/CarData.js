@@ -14,7 +14,7 @@ const createCar = (obj) => new Promise((resolve, reject) => {
         .then((response) => {
             const id = response.data.name;
             axios
-                .patch('https://localhost:7095/api/Car/${id}', { id })
+                .patch(`https://localhost:7095/api/Car/${id}`, { id })
                 .then(() => {
                     getCars().then(resolve);
                 });
