@@ -18,7 +18,7 @@ export default function Buyers() {
   }, []);
 
   return (
-    <div>
+    <div id="container">
       <h1>Buyers Page</h1>
       <div>
         {buyers.length ? (
