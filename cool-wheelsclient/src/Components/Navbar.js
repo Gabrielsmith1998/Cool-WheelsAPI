@@ -17,7 +17,9 @@ export default function Navigation() {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/cars">Cars</Nav.Link>
                         <Nav.Link href="/tracks">Tracks</Nav.Link>
+                        <Nav.Link href="/buyers">Buyers</Nav.Link>
                         {/*<Nav.Button href="../Views/SignIn.js">Sign In</Nav.Button>*/}
+                        {/*<Button variant="outline-success" href="/signin">Sign In</Button>*/}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
