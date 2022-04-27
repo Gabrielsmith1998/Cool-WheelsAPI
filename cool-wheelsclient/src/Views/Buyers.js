@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getBuyers from '../api/data/BuyerData';
+import { getBuyers } from '../api/data/BuyerData';
 import BuyerCard from '../Components/BuyerCard';
 
 export default function Buyers() {

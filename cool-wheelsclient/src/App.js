@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import PublicRoutes from './Routes';
+import PublicRoutes from './Routes/PublicRoutes';
 
 function App() {
     return (
