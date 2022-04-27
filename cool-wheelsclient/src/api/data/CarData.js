@@ -10,11 +10,11 @@ const getCars = () => new Promise((resolve, reject) => {
 
 const createCar = (obj) => new Promise((resolve, reject) => {
     axios
-        .post(`https://localhost:7095/api/Car`, obj)
+        .post('https://localhost:7095/api/Car', obj)
         .then((response) => {
             const id = response.data.name;
             axios
-                .patch(`https://localhost:7095/api/Car/${id}`, { id })
+                .patch('https://localhost:7095/api/Car/${id}', { id })
                 .then(() => {
                     getCars().then(resolve);
                 });
