@@ -22,9 +22,9 @@ const createCar = (obj) => new Promise((resolve, reject) => {
         .catch(reject);
 });
 
-const updateCar = (id, updateObj) => new Promise((resolve, reject) => {
+const updateCar = (updateObj) => new Promise((resolve, reject) => {
     axios
-        .patch(`https://localhost:7095/api/Car/${id}`, updateObj)
+        .patch(`https://localhost:7095/api/Car/${updateObj.id}`, updateObj)
         .then(() => getCars().then(resolve))
         .catch(reject);
 });
