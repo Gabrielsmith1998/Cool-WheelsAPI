@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { updateBuyer } from '../api/data/BuyerData';
 
+
 const initialState = {
   name: '',
   userName: '',
