@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getTracks from '../api/data/TrackData'
+import { getTracks } from '../api/data/TrackData';
 import TrackCards from '../Components/TrackCards';
 
 export default function Tracks() {

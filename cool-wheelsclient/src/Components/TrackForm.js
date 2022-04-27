@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { createTrack, getSingleTrack, updateTrack } from '../api/data/TrackData';
 
 const initialState = {
   name: '',
   price: '',
   imageUrl: '',
   buyerId: '',
-  id: ''
+  id: '',
 };
 
-export default function TrackForm({ tracks }) {
+export default function TrackForm() {
+  const { id } = useParams();
   const [formInput, setFormInput] = useState(initialState);
 
-  const history = useHistory();
+  const Navigate = useNavigate();
 
   useEffect(() => {
-    if (tracks.id) {
-      getSingleTrack(tracks.id).then((obj) => {
+    if (id) {
+      getSingleTrack(id).then((obj) => {
         setFormInput({
           name: obj.name,
           price: obj.price,
@@ -34,14 +35,14 @@ export default function TrackForm({ tracks }) {
   const handleName = (e) => {
     setFormInput((prevState) => ({
       ...prevState,
-      title: e.target.value,
+      name: e.target.value,
     }));
   };
 
   const handlePrice = (e) => {
     setFormInput((prevState) => ({
       ...prevState,
-      price: e.target.value,
+      price: Number(e.target.value),
     }));
   };
 
@@ -55,7 +56,14 @@ export default function TrackForm({ tracks }) {
   const handleBuyerId = (e) => {
     setFormInput((prevState) => ({
       ...prevState,
-      buyerId: e.target.value,
+      buyerId: Number(e.target.value),
+    }));
+  };
+
+  const handleId = (e) => {
+    setFormInput((prevState) => ({
+      ...prevState,
+      id: Number(e.target.value),
     }));
   };
 
@@ -65,15 +73,15 @@ export default function TrackForm({ tracks }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (tracks.id) {
+    if (id) {
       updateTrack(formInput).then(() => {
         resetForm();
-        history.push('/');
+        Navigate("/tracks");
       });
     } else {
       createTrack(formInput).then(() => {
         resetForm();
-        history.push('/');
+        Navigate('/');
       });
     }
   };
@@ -104,6 +112,11 @@ export default function TrackForm({ tracks }) {
           onChange={handleBuyerId}
           value={formInput.buyerId}
         />
+        <input
+          placeholder="ID"
+          onChange={handleId}
+          value={formInput.id}
+        />
         <br />
         <button type="submit" className="btn btn-success">
           Submit
@@ -112,7 +125,3 @@ export default function TrackForm({ tracks }) {
     </div>
   );
 }
-
-TrackForm.propTypes = {
-    tracks: PropTypes.shape(PropTypes.obj).isRequired,
-};
