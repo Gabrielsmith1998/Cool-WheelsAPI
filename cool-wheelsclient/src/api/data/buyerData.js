@@ -28,20 +28,21 @@ const createBuyer = (buyer) => new Promise((resolve, reject) => {
             const id = response.data.name;
             axios
                 .patch(dbUrl, { id })
-                .then(() => getBuyers().then(resolve));
-        });
+                .then(() => getBuyers().then(resolve))
+        })
+        .catch(reject);
 });
 
 const updateBuyer = (buyer) => new Promise((resolve, reject) => {
     axios
-        .patch(dbUrl, buyer)
+        .patch(`${dbUrl}/${buyer.id}`, buyer)
         .then(() => getBuyers().then(resolve))
         .catch(reject);
 });
 
 const deleteBuyer = (buyer) => new Promise((resolve, reject) => {
     axios
-        .delete(dbUrl)
+        .delete(`${dbUrl}/${buyer.id}`)
         .then(() => getBuyers().then(resolve))
         .catch(reject);
 });

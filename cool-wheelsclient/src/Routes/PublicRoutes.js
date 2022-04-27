@@ -15,12 +15,12 @@ export default function PublicRoutes() {
         <div>
             <Routes>
                 <Route exact path="/" element={<Home/>} />
-                <Route exact path="/profile" element={<Profile/>} />
                 <Route exact path="/cars" element={<Cars/>} />
                 <Route exact path="/tracks" element={<Tracks/>} />
                 <Route exact path="/item" element={<ItemView/>} />
                 <Route exact path="/buyers" element={<Buyers/>} />
-                <Route exact path ="/edit-buyer/:id" element={<EditBuyer />} />
+                <Route exact path ="/edit-buyer/:id" element={<EditBuyer/>} />
+                <Route exact path="/buyers/:id" element={<Profile/>} />
             </Routes>
         </div>
     );

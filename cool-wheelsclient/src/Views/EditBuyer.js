@@ -9,6 +9,7 @@ export default function EditBuyer() {
 
   useEffect(() => {
     let isMounted = true;
+    
     if (isMounted) {
       getBuyer(id).then(setEditBuyer);
     }
@@ -16,11 +17,11 @@ export default function EditBuyer() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [id]);
 
   return (
     <div>
-      <h1>Edit Buyer</h1>
+      <h1>Edit {editBuyer.name}'s Information</h1>
       <BuyerForm buyer={editBuyer} />
     </div>
   );
