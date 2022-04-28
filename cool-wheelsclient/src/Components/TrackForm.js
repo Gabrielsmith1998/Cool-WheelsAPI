@@ -42,7 +42,7 @@ export default function TrackForm() {
   const handlePrice = (e) => {
     setFormInput((prevState) => ({
       ...prevState,
-      price: Number(e.target.value),
+      price: e.target.value,
     }));
   };
 
