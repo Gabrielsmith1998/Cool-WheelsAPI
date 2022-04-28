@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createCar, updateCar } from '../api/data/CarData';
 
@@ -14,8 +14,9 @@ const initialState = {
 }
 
 export default function CarForm({ obj }) {
+    const { id } = useParams();
     const [formInput, setFormInput] = useState(initialState);
-    const history = useNavigate();
+    const Navigate = useNavigate();
 
 
     useEffect(() => {
@@ -39,17 +40,18 @@ export default function CarForm({ obj }) {
         setFormInput(initialState);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-        if (obj.id) {
-            updateCar(obj.id, formInput).then(() => {
+        if (id) {
+            updateCar(formInput).then(() => {
                 resetForm();
-                history('Cars')
+                Navigate('/Cars')
             });
         } else {
             createCar({ ...formInput }).then(() => {
                 resetForm();
-                history('Cars')
+                Navigate('/')
             });
         }
     };
@@ -114,6 +116,15 @@ export default function CarForm({ obj }) {
                             placeholder="Item Image"
                         />
                         <p />
+                        <input
+                            id="id"
+                            name="id"
+                            value={formInput.id}
+                            onChange={handleChange}
+                            required
+                            placeholder="Car Id"
+                        />
+                         <p />
                         <button
                             type="submit"
                             className="btn btn-info"

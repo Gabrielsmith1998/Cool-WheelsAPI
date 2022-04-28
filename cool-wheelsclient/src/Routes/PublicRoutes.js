@@ -11,6 +11,7 @@ import TrackForm from '../Components/TrackForm';
 import EditTrack from '../Views/EditTracks';
 import EditBuyer from '../Views/EditBuyer';
 import NewCars from '../Views/NewCars';
+import EditCar from '../Views/EditCars';
 
 //prone to be changed due to PropTypes
 export default function PublicRoutes() {
@@ -22,6 +23,7 @@ export default function PublicRoutes() {
                 <Route exact path="/profile" element={<Profile/>} />
                 <Route exact path="/cars" element={<Cars />} />
                 <Route exact path="/newcars" element={<NewCars />} />
+                <Route exact path="/cars-edit/:id" element={<EditCar />} />
                 <Route exact path="/tracks" element={<Tracks/>} />
                 <Route exact path="/tracks-form" element={<TrackForm />} />
                 <Route exact path="/tracks-edit/:id" element={<EditTrack />} />
