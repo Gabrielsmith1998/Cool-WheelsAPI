@@ -1,5 +1,6 @@
-import './App.css';
+import '../src/styles/styles.scss'
 import React from 'react';
+import PublicRoutes from './Routes/PublicRoutes';
 import Navigation from './Components/Navbar.js';
 import PublicRoutes from './Routes';
 

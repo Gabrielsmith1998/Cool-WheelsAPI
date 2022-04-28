@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getBuyers from '../api/data/BuyerData';
+import { getBuyers } from '../api/data/BuyerData';
 import BuyerCard from '../Components/BuyerCard';
 
 export default function Buyers() {
@@ -18,7 +18,7 @@ export default function Buyers() {
   }, []);
 
   return (
-    <div>
+    <div id="container">
       <h1>Buyers Page</h1>
       <div>
         {buyers.length ? (

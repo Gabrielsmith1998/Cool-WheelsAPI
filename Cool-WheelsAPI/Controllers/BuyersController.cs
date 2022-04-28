@@ -67,7 +67,7 @@ namespace Cool_WheelsAPI.Controllers
         }
 
         // PUT api/buyers/<id>
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Put(int id, Buyer buyer)
         {
             if (id != buyer.Id)
