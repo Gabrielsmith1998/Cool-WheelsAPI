@@ -81,7 +81,7 @@ export default function TrackForm() {
     } else {
       createTrack(formInput).then(() => {
         resetForm();
-        Navigate('/');
+        Navigate('/tracks');
       });
     }
   };
