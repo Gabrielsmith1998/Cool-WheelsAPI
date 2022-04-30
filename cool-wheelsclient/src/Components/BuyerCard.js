@@ -16,7 +16,7 @@ export default function Buyer({ buyer, setBuyers}) {
   return (
     <div>
       <div className="card">
-        <img classname="card-img-top" src={buyer.image} alt={buyer.name} />
+        <img className="card-img-top" src={buyer.image} alt={buyer.name} />
         <div className="card-body">
           <h4 className="card-title">{buyer.name}</h4>
           <h5>@{buyer.userName} | {buyer.email}</h5>
