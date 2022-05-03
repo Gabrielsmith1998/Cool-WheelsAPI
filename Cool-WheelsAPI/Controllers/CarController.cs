@@ -1,5 +1,6 @@
 ﻿using Cool_WheelsAPI.Models;
 using Cool_WheelsAPI.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,8 +39,9 @@ namespace Cool_WheelsAPI.Controllers
             return Ok(newCar);
         }
 
-        // PUT api/<CarController>/5
-        [HttpPut("{id}")]
+        // PATCH api/<CarController>/5
+        [EnableCors("_myAllowSpecificOrigins")]
+        [HttpPatch("{id}")]
         public IActionResult Put(int id, Car car)
         {
             if (id != car.Id)
