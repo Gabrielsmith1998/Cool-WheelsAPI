@@ -12,6 +12,7 @@ import EditTrack from '../Views/EditTracks';
 import EditBuyer from '../Views/EditBuyer';
 import NewCars from '../Views/NewCars';
 import EditCar from '../Views/EditCars';
+import SingleCarView from '../Views/SingleCarView';
 
 //prone to be changed due to PropTypes
 export default function PublicRoutes() {
@@ -24,6 +25,7 @@ export default function PublicRoutes() {
                 <Route exact path="/cars" element={<Cars />} />
                 <Route exact path="/newcars" element={<NewCars />} />
                 <Route exact path="/cars-edit/:id" element={<EditCar />} />
+                <Route exact path="/cars-single/:id" element={<SingleCarView />} />
                 <Route exact path="/tracks" element={<Tracks/>} />
                 <Route exact path="/tracks-form" element={<TrackForm />} />
                 <Route exact path="/tracks-edit/:id" element={<EditTrack />} />

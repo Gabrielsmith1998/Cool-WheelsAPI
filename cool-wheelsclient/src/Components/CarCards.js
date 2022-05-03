@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getCars , deleteCar } from '../api/data/CarData';
+import { deleteCar } from '../api/data/CarData';
 
 export default function CarCard({ car, setCars }) {
 
@@ -20,6 +20,9 @@ export default function CarCard({ car, setCars }) {
                 <div className="button-row">
                 <Link to={`/cars-edit/${car.id}`} className="btn btn-warning">
                     Edit
+                </Link>
+                    <Link to={`/cars-single/${car.id}`} className="btn btn-success">
+                    View
                 </Link>
                 <button
                     onClick={() => handleDelete('delete')}
