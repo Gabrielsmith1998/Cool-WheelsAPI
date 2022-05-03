@@ -1,1 +1,11 @@
 
+#buyer-container {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: center;
+  margin: 24px auto;
+}
+
+#buyer-card {
+  width: 500px;
+}
