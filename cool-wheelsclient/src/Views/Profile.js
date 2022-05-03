@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getBuyer } from '../api/data/BuyerData';
-import getCars from '../api/data/CarData';
+import { getCars } from '../api/data/CarData';
 import { getTracks } from '../api/data/TrackData';
 import BuyerCard from '../Components/BuyerCard';
 import CarCard from '../Components/CarCards';
