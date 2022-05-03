@@ -31,7 +31,7 @@ export default function Buyer({ buyer, setBuyers}) {
           <Link to={`/edit-buyer/${buyer.id}`}>
             <button type="button" className="btn btn-primary edit-btn">Edit</button>
           </Link>
-          <button type="button" onClick={() => handleClick('delete')}>Delete</button>
+          <button type="button" className="btn btn-danger" onClick={() => handleClick('delete')}>Delete</button>
         </div>
       </div>
     </div>
