@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { createTrack, getSingleTrack, updateTrack } from '../api/data/TrackData';
+import { createTrack, getSingleTrack, getTracks, updateTrack } from '../api/data/TrackData';
 
 const initialState = {
   name: '',
   price: '',
   imageUrl: '',
-  buyerId: '',
   id: '',
 };
 
@@ -23,7 +22,6 @@ export default function TrackForm() {
           name: obj.name,
           price: obj.price,
           imageUrl: obj.imageUrl,
-          buyerId: obj.buyerId,
           id: obj.id
         });
       });
@@ -53,13 +51,6 @@ export default function TrackForm() {
     }));
   };
 
-  const handleBuyerId = (e) => {
-    setFormInput((prevState) => ({
-      ...prevState,
-      buyerId: Number(e.target.value),
-    }));
-  };
-
   const handleId = (e) => {
     setFormInput((prevState) => ({
       ...prevState,
@@ -70,6 +61,7 @@ export default function TrackForm() {
   const resetForm = () => {
     setFormInput(initialState);
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,11 +99,6 @@ export default function TrackForm() {
           value={formInput.imageUrl}
         />
         <br />
-        <input
-          placeholder="Buyer ID"
-          onChange={handleBuyerId}
-          value={formInput.buyerId}
-        />
         <input
           placeholder="ID"
           onChange={handleId}
