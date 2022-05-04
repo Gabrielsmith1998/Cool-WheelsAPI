@@ -116,15 +116,6 @@ export default function CarForm({ obj }) {
                             placeholder="Item Image"
                         />
                         <p />
-                        <input
-                            id="id"
-                            name="id"
-                            value={formInput.id}
-                            onChange={handleChange}
-                            required
-                            placeholder="Car Id"
-                        />
-                         <p />
                         <button
                             type="submit"
                             className="btn btn-info"
