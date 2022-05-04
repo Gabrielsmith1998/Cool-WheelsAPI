@@ -30,8 +30,8 @@ export default function PublicRoutes({ isLoggedIn }) {
                 <Route exact path="/tracks-edit/:id" element={isLoggedIn ? <EditTrack/> : <Login/>} />
                 <Route exact path="/item" element={isLoggedIn ? <ItemView/> : <Login/>} />
                 <Route exact path="/buyers" element={isLoggedIn ? <Buyers/> : <Login/>} />
-                <Route exact path ="/edit-buyer/:id" element={isLoggedIn ? <EditBuyer/> : <Login/>} />
-                <Route exact path="/buyers/:id" element={isLoggedIn ? <Profile/> : <Login/>} />
+                <Route exact path ="/edit-buyer/:firebaseUserId" element={isLoggedIn ? <EditBuyer/> : <Login/>} />
+                <Route exact path="/buyers/:firebaseUserId" element={isLoggedIn ? <Profile/> : <Login/>} />
                 <Route exact path="/login" element={isLoggedIn ? <Home/> : <Login/>} />
                 <Route exact path="/register" element={isLoggedIn ? <Home/> : <Register/>} />
                 <Route exact path="/logout" element={isLoggedIn ? <Home/> : <Register/>} />
