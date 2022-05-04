@@ -11,19 +11,19 @@ export default function Profile() {
   const [buyer, setBuyer] = useState({});
   const [tracks, setTracks] = useState([]);
   const [cars, setCars] = useState([]);
-  const { id } = useParams();
+  const { firebaseUserId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
     
     if (isMounted) {
-      getBuyer(id).then(setBuyer);
+      getBuyer(firebaseUserId).then(setBuyer);
     }
 
     return () => {
       isMounted = false;
     }
-  }, [id]);
+  }, [firebaseUserId]);
 
   useEffect(() => {
     let isMounted = true;

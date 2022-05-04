@@ -29,11 +29,13 @@ namespace Cool_WheelsAPI.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT Id,
+                                               FirebaseUserId,
                                                [Name],
                                                UserName,
                                                Email,
                                                About,
-                                               Image
+                                               Image,
+                                               [Role]
                                         FROM Buyer";
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -44,10 +46,12 @@ namespace Cool_WheelsAPI.Repositories
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Name = reader.GetString(reader.GetOrdinal("Name")),
+                            FirebaseUserId = reader.GetString(reader.GetOrdinal("FirebaseUserId")),
                             UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             Email = reader.GetString(reader.GetOrdinal("Email")),
                             About = reader.GetString(reader.GetOrdinal("About")),
-                            Image = reader.GetString(reader.GetOrdinal("Image"))
+                            Image = reader.GetString(reader.GetOrdinal("Image")),
+                            Role = reader.GetString(reader.GetOrdinal("Role"))
                         };
 
                         buyers.Add(buyer);
@@ -61,7 +65,7 @@ namespace Cool_WheelsAPI.Repositories
             }
         }
 
-        public Buyer GetBuyerById(int id)
+        public Buyer GetByFirebaseUserId(string firebaseUserId)
         {
             using (SqlConnection conn = Connection)
             {
@@ -69,15 +73,17 @@ namespace Cool_WheelsAPI.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT Id,
+                                               FirebaseUserId,
                                                [Name],
                                                UserName,
                                                Email,
                                                About,
-                                               Image
+                                               Image,
+                                               [Role]
                                         FROM Buyer
-                                        WHERE Id = @id";
+                                        WHERE FirebaseUserId = @firebaseUserId";
 
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@firebaseUserId", firebaseUserId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -86,11 +92,13 @@ namespace Cool_WheelsAPI.Repositories
                         Buyer buyer = new Buyer
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            FirebaseUserId = reader.GetString(reader.GetOrdinal("FirebaseUserId")),
                             Name = reader.GetString(reader.GetOrdinal("Name")),
                             UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             Email = reader.GetString(reader.GetOrdinal("Email")),
                             About = reader.GetString(reader.GetOrdinal("About")),
-                            Image = reader.GetString(reader.GetOrdinal("Image"))
+                            Image = reader.GetString(reader.GetOrdinal("Image")),
+                            Role = reader.GetString(reader.GetOrdinal("Role"))
                         };
 
                         reader.Close();
@@ -113,16 +121,18 @@ namespace Cool_WheelsAPI.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                    INSERT INTO Buyer ([Name], UserName, Email, About, Image)
+                    INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, Image, [Role])
                     OUTPUT INSERTED.ID
-                    VALUES (@name, @userName, @email, @about, @image);
+                    VALUES (@firebaseUserId, @name, @userName, @email, @about, @image, @role);
                 ";
 
+                    cmd.Parameters.AddWithValue("@firebaseUserId", buyer.FirebaseUserId);
                     cmd.Parameters.AddWithValue("@name", buyer.Name);
                     cmd.Parameters.AddWithValue("@userName", buyer.UserName);
                     cmd.Parameters.AddWithValue("@email", buyer.Email);
                     cmd.Parameters.AddWithValue("@about", buyer.About);
                     cmd.Parameters.AddWithValue("@image", buyer.Image);
+                    cmd.Parameters.AddWithValue("@role", buyer.Role);
 
                     int id = (int)cmd.ExecuteScalar();
 
@@ -146,22 +156,24 @@ namespace Cool_WheelsAPI.Repositories
                                 UserName = @userName,
                                 Email = @email,
                                 About = @about,
-                                Image = @image
-                            WHERE Id = @id";
+                                Image = @image,
+                                Role = @role
+                            WHERE FirebaseUserId = @firebaseUserId";
 
+                    cmd.Parameters.AddWithValue("@firebaseUserId", buyer.FirebaseUserId);
                     cmd.Parameters.AddWithValue("@name", buyer.Name);
                     cmd.Parameters.AddWithValue("@userName", buyer.UserName);
                     cmd.Parameters.AddWithValue("@email", buyer.Email);
                     cmd.Parameters.AddWithValue("@about", buyer.About);
                     cmd.Parameters.AddWithValue("@image", buyer.Image);
-                    cmd.Parameters.AddWithValue("@id", buyer.Id);
+                    cmd.Parameters.AddWithValue("@role", buyer.Role);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void DeleteBuyer(int buyerId)
+        public void DeleteBuyer(string firebaseUserId)
         {
             using (SqlConnection conn = Connection)
             {
@@ -171,10 +183,10 @@ namespace Cool_WheelsAPI.Repositories
                 {
                     cmd.CommandText = @"
                             DELETE FROM Buyer
-                            WHERE Id = @id
+                            WHERE FirebaseUserId = @firebaseUserId
                         ";
 
-                    cmd.Parameters.AddWithValue("@id", buyerId);
+                    cmd.Parameters.AddWithValue("@firebaseUserId", firebaseUserId);
 
                     cmd.ExecuteNonQuery();
                 }
