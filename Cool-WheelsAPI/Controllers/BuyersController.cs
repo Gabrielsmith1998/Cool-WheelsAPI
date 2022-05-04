@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Cool_WheelsAPI.Repositories;
 using Cool_WheelsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Cool_WheelsAPI.Controllers
 {
+    [Authorize]
     [Route("api/buyers")]
     [ApiController]
     public class BuyersController : ControllerBase
@@ -24,11 +26,10 @@ namespace Cool_WheelsAPI.Controllers
             return _buyerRepo.GetAllBuyers();
         }
 
-        // GET api/buyers/<id>
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        [HttpGet("{firebaseUserId}")]
+        public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            var matchingBuyer = _buyerRepo.GetBuyerById(id);
+            var matchingBuyer = _buyerRepo.GetByFirebaseUserId(firebaseUserId);
             if (matchingBuyer == null)
             {
                 return NotFound();
@@ -37,45 +38,39 @@ namespace Cool_WheelsAPI.Controllers
             return Ok(matchingBuyer);
         }
 
+        [HttpGet("DoesUserExist/{firebaseUserId}")]
+        public IActionResult DoesUserExist(string firebaseUserId)
+        {
+            var matchingBuyer = _buyerRepo.GetByFirebaseUserId(firebaseUserId);
+            if (matchingBuyer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok();
+        }
+
         // POST api/buyers
         [HttpPost]
         public IActionResult Post(Buyer buyer)
         {
-            if (!ValidNewBuyer(buyer))
-            {
-                return BadRequest(buyer);
-            }
-            else
-            {
-                _buyerRepo.AddBuyer(buyer);
-                return Ok(buyer);
-            }
+            // All newly registered users start out as a "user" user type (i.e. they are not admins)
+            buyer.Role = "user";
+            _buyerRepo.AddBuyer(buyer);
+            return CreatedAtAction(
+                nameof(GetByFirebaseUserId), new { firebaseUserId = buyer.FirebaseUserId }, buyer);
         }
 
-        private bool ValidNewBuyer(Buyer buyer)
+        // PATCH api/buyers/<firebaseUserId>
+        [HttpPatch("{firebaseUserId}")]
+        public IActionResult Put(string firebaseUserId, Buyer buyer)
         {
-            if (buyer == null)
-            {
-                return false;
-            }
-            if (buyer.Name == null)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        // PUT api/buyers/<id>
-        [HttpPatch("{id}")]
-        public IActionResult Put(int id, Buyer buyer)
-        {
-            if (id != buyer.Id)
+            if (firebaseUserId != buyer.FirebaseUserId)
             {
                 return BadRequest();
             }
 
-            var existingBuyer = _buyerRepo.GetBuyerById(id);
+            var existingBuyer = _buyerRepo.GetByFirebaseUserId(firebaseUserId);
             if (existingBuyer == null)
             {
                 return NotFound();
@@ -87,18 +82,18 @@ namespace Cool_WheelsAPI.Controllers
             }
         }
 
-        // DELETE api/buyers/<id>
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        // DELETE api/buyers/<firebaseUserId>
+        [HttpDelete("{firebaseUserId}")]
+        public IActionResult Delete(string firebaseUserId)
         {
-            var matchingBuyer = _buyerRepo.GetBuyerById(id);
+            var matchingBuyer = _buyerRepo.GetByFirebaseUserId(firebaseUserId);
             if (matchingBuyer == null)
             {
                 return NotFound();
             }
             else
             {
-                _buyerRepo.DeleteBuyer(id);
+                _buyerRepo.DeleteBuyer(matchingBuyer.FirebaseUserId);
                 return NoContent();
             }
         }
