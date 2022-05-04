@@ -5,19 +5,19 @@ import BuyerForm from "../Components/BuyerForm";
 
 export default function EditBuyer() {
   const [editBuyer, setEditBuyer] = useState({});
-  const { id } = useParams();
+  const { firebaseUserId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
     
     if (isMounted) {
-      getBuyer(id).then(setEditBuyer);
+      getBuyer(firebaseUserId).then(setEditBuyer);
     }
 
     return () => {
       isMounted = false;
     };
-  }, [id]);
+  }, [firebaseUserId]);
 
   return (
     <div>
