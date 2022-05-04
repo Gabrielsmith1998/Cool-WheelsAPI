@@ -22,13 +22,13 @@ export default function Buyer({ buyer, setBuyers}) {
           <h5>@{buyer.userName} | {buyer.email}</h5>
           <p className="card-text">{buyer.about}</p>
           {setBuyers ? (
-            <Link to={`/buyers/${buyer.id}`}>
+            <Link to={`/buyers/${buyer.firebaseUserId}`}>
               <button type="button" className="btn btn-primary profile-btn">Profile</button>
             </Link>
           ) : (
             ""
           )}
-          <Link to={`/edit-buyer/${buyer.id}`}>
+          <Link to={`/edit-buyer/${buyer.firebaseUserId}`}>
             <button type="button" className="btn btn-primary edit-btn">Edit</button>
           </Link>
           <button type="button" className="btn btn-danger delete-btn" onClick={() => handleClick('delete')}>Delete</button>

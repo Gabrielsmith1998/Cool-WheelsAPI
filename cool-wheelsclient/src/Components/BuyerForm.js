@@ -12,7 +12,8 @@ const initialState = {
   userName: '',
   email: '',
   about: '',
-  image: ''
+  image: '',
+  role: 'user'
 };
 
 export default function BuyerForm({ buyer = {} }) {
@@ -26,11 +27,13 @@ export default function BuyerForm({ buyer = {} }) {
       if (buyer.id) {
         setFormInput({
           id: buyer.id,
+          firebaseUserId: buyer.firebaseUserId,
           name: buyer.name,
           userName: buyer.userName,
           email: buyer.email,
           about: buyer.about,
-          image: buyer.image
+          image: buyer.image,
+          role: buyer.role,
         })
       }
     }
