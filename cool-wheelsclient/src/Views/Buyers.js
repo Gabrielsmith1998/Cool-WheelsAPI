@@ -18,9 +18,9 @@ export default function Buyers() {
   }, []);
 
   return (
-    <div id="container">
+    <div>
       <h1>Buyers Page</h1>
-      <div>
+      <div id="buyer-container">
         {buyers.length ? (
           buyers.map((buyer) => (
             <BuyerCard key={buyer.id} buyer={buyer} setBuyers={setBuyers} />

@@ -1,12 +1,12 @@
 import React from 'react';
-/*import PropTypes from 'prop-types';*/
+import signOutUser from '../api/auth';
 import {
     Navbar,
     Container,
     Nav,
 } from 'react-bootstrap';
 
-export default function Navigation() {
+export default function Navigation({ isLoggedIn }) {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -14,12 +14,13 @@ export default function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/cars">Cars</Nav.Link>
                         <Nav.Link href="/tracks">Tracks</Nav.Link>
                         <Nav.Link href="/buyers">Buyers</Nav.Link>
-                        {/*<Nav.Button href="../Views/SignIn.js">Sign In</Nav.Button>*/}
-                        {/*<Button variant="outline-success" href="/signin">Sign In</Button>*/}
+                        {isLoggedIn
+                        ? <Nav.Link href="/login" onClick={signOutUser}>Logout</Nav.Link>
+                        : <Nav.Link href="/login">Login</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>

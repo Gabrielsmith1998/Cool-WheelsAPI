@@ -14,6 +14,8 @@ builder.Services.AddCors(options =>
                       });
 });
 
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddTransient<ICarRepository, CarRepository>();
@@ -35,6 +37,7 @@ app.UseHttpsRedirection();
 
 app.UseCors(builder => { builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin(); });
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

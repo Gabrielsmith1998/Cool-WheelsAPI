@@ -15,7 +15,7 @@ export default function Buyer({ buyer, setBuyers}) {
 
   return (
     <div>
-      <div className="card">
+      <div className="card" id="buyer-card">
         <img className="card-img-top" src={buyer.image} alt={buyer.name} />
         <div className="card-body">
           <h4 className="card-title">{buyer.name}</h4>
@@ -31,7 +31,7 @@ export default function Buyer({ buyer, setBuyers}) {
           <Link to={`/edit-buyer/${buyer.id}`}>
             <button type="button" className="btn btn-primary edit-btn">Edit</button>
           </Link>
-          <button type="button" className="btn btn-danger" onClick={() => handleClick('delete')}>Delete</button>
+          <button type="button" className="btn btn-danger delete-btn" onClick={() => handleClick('delete')}>Delete</button>
         </div>
       </div>
     </div>

@@ -2,8 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/styles.scss';
+import firebase from 'firebase/compat/app';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+};
+firebase.initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
