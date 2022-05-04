@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getCars from '../api/data/CarData';
+import { getCars } from '../api/data/CarData';
 import CarCards from '../Components/CarCards';
 
 export default function Cars() {

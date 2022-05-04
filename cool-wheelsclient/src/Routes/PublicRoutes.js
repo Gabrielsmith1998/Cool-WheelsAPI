@@ -9,6 +9,9 @@ import ItemView from '../Views/ItemView';
 import TrackForm from '../Components/TrackForm';
 import EditTrack from '../Views/EditTracks';
 import EditBuyer from '../Views/EditBuyer';
+import NewCars from '../Views/NewCars';
+import EditCar from '../Views/EditCars';
+import SingleCarView from '../Views/SingleCarView';
 import Login from '../Views/Login';
 import Register from '../Views/Register';
 
