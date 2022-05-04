@@ -11,7 +11,6 @@ export default function Tracks() {
     if (isMounted) {
       getTracks().then((allTracks) => {
         setTracks(allTracks)
-        console.warn(allTracks)
       });
     }
     return () => {
