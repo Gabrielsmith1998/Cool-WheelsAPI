@@ -1,7 +1,8 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { createBuyer } from "./data/BuyerData";
 
-const _apiUrl = "/api/userprofile";
+const _apiUrl = "https://localhost:7095/api/buyers";
 
 const _doesUserExist = (firebaseUserId) => {
   return getToken().then((token) =>
@@ -11,18 +12,6 @@ const _doesUserExist = (firebaseUserId) => {
         Authorization: `Bearer ${token}`
       }
     }).then(resp => resp.ok));
-};
-
-const _saveUser = (userProfile) => {
-  return getToken().then((token) =>
-    fetch(_apiUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userProfile)
-    }).then(resp => resp.json()));
 };
 
 export const getToken = () => {
@@ -58,10 +47,10 @@ export const logout = () => {
 };
 
 
-export const register = (userProfile, password) => {
-  return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)
-    .then((createResponse) => _saveUser({
-      ...userProfile,
+export const register = (buyer, password) => {
+  return firebase.auth().createUserWithEmailAndPassword(buyer.email, password)
+    .then((createResponse) => createBuyer({
+      ...buyer,
       firebaseUserId: createResponse.user.uid
     }).then(() => _onLoginStatusChangedHandler(true)));
 };
