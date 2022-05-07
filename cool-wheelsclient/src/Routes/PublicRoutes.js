@@ -17,7 +17,7 @@ import Register from '../Views/Register';
 import SingleTrack from '../Views/SingleTrack';
 
 //prone to be changed due to PropTypes
-export default function PublicRoutes({ isLoggedIn }) {
+export default function PublicRoutes({ isLoggedIn, isAdmin }) {
     return (
         <div>
             <Routes>
@@ -31,9 +31,9 @@ export default function PublicRoutes({ isLoggedIn }) {
                 <Route exact path="/tracks-form" element={isLoggedIn ? <TrackForm/> : <Login/>} />
                 <Route exact path="/tracks-edit/:id" element={isLoggedIn ? <EditTrack/> : <Login/>} />
                 <Route exact path="/item" element={isLoggedIn ? <ItemView/> : <Login/>} />
-                <Route exact path="/buyers" element={isLoggedIn ? <Buyers/> : <Login/>} />
+                <Route exact path="/buyers" element={isLoggedIn ? <Buyers isAdmin={isAdmin}/> : <Login/>} />
                 <Route exact path ="/edit-buyer/:firebaseUserId" element={isLoggedIn ? <EditBuyer/> : <Login/>} />
-                <Route exact path="/buyers/:firebaseUserId" element={isLoggedIn ? <Profile/> : <Login/>} />
+                <Route exact path="/buyers/:firebaseUserId" element={isLoggedIn ? <Profile isAdmin={isAdmin}/> : <Login/>} />
                 <Route exact path="/login" element={isLoggedIn ? <Home/> : <Login/>} />
                 <Route exact path="/register" element={isLoggedIn ? <Home/> : <Register/>} />
                 <Route exact path="/logout" element={isLoggedIn ? <Home/> : <Register/>} />
