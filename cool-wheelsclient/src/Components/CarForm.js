@@ -10,7 +10,6 @@ const initialState = {
     year: "",
     price: "",
     imageUrl: "",
-    buyerId: "",
 }
 
 export default function CarForm({ obj }) {
