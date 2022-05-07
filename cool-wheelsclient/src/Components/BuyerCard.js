@@ -17,7 +17,8 @@ onAuthStateChanged(auth, (user) => {
     uid = user.uid;
   }
 });
-export default function Buyer({ buyer, setBuyers}) {
+
+export default function Buyer({ buyer, setBuyers, isAdmin }) {
 
   const handleClick = (method) => {
     // eslint-disable-next-line no-restricted-globals
@@ -42,7 +43,7 @@ export default function Buyer({ buyer, setBuyers}) {
           ) : (
             ""
           )}
-          {buyer.firebaseUserId === uid ? (
+          {buyer.firebaseUserId === uid || isAdmin ? (
           <>
             <Link to={`/edit-buyer/${buyer.firebaseUserId}`}>
               <button type="button" className="btn btn-primary edit-btn">Edit</button>
