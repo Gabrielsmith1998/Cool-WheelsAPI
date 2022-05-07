@@ -14,6 +14,7 @@ import EditCar from '../Views/EditCars';
 import SingleCarView from '../Views/SingleCarView';
 import Login from '../Views/Login';
 import Register from '../Views/Register';
+import SingleTrack from '../Views/SingleTrack';
 
 //prone to be changed due to PropTypes
 export default function PublicRoutes({ isLoggedIn }) {
@@ -26,6 +27,7 @@ export default function PublicRoutes({ isLoggedIn }) {
                 <Route exact path="/cars-edit/:id" element={isLoggedIn ? <EditCar /> : <Login/>} />
                 <Route exact path="/cars-single/:id" element={isLoggedIn ? <SingleCarView /> : <Login/>} />
                 <Route exact path="/tracks" element={isLoggedIn ? <Tracks/> : <Login/>} />
+                <Route exact path="/tracks-single/:id" element={isLoggedIn ? <SingleTrack /> : <Login/>} />
                 <Route exact path="/tracks-form" element={isLoggedIn ? <TrackForm/> : <Login/>} />
                 <Route exact path="/tracks-edit/:id" element={isLoggedIn ? <EditTrack/> : <Login/>} />
                 <Route exact path="/item" element={isLoggedIn ? <ItemView/> : <Login/>} />

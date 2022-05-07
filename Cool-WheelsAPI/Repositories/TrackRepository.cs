@@ -115,7 +115,15 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.Parameters.AddWithValue("@name", track.Name);
                     cmd.Parameters.AddWithValue("@price", track.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", track.ImageUrl);
-                    cmd.Parameters.AddWithValue("@buyerId", track.BuyerId);
+
+                    if (track.BuyerId.ToString() == null)
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", track.BuyerId);
+                    }
 
                     int newlyCreatedId = (int)cmd.ExecuteScalar();
 

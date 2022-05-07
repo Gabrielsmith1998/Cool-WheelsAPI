@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { deleteBuyer } from '../api/data/BuyerData';
- 
 
 export default function Buyer({ buyer, setBuyers}) {
   const handleClick = (method) => {
