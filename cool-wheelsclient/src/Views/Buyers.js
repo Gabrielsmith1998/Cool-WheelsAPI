@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { getBuyers } from '../api/data/BuyerData';
 import BuyerCard from '../Components/BuyerCard';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import firebase from 'firebase/compat/app';
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+};
+firebase.initializeApp(firebaseConfig);
+
+var uid;
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    uid = user.uid;
+  }
+});
 
 export default function Buyers() {
   const [buyers, setBuyers] = useState([]);
