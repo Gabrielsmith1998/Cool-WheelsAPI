@@ -10,7 +10,7 @@ export default function Tracks() {
     let isMounted = true;
     if (isMounted) {
       getTracks().then((allTracks) => {
-        setTracks(allTracks);
+        setTracks(allTracks)
       });
     }
     return () => {
