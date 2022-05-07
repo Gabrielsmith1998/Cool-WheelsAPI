@@ -29,17 +29,6 @@ const getBuyer = (firebaseUserId) => new Promise((resolve, reject) => {
     });
 });
 
-// const createBuyer = (buyer) => new Promise((resolve, reject) => {
-//     axios
-//         .post(dbUrl, buyer)
-//         .then((response) => {
-//             const id = response.data.name;
-//             axios
-//                 .patch(dbUrl, { id })
-//                 .then(() => getBuyers().then(resolve))
-//         })
-//         .catch(reject);
-// });
 const createBuyer = (buyer) => new Promise((resolve, reject) => {
     return getToken().then((token) => {
         axios

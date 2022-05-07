@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cool_WheelsAPI.Controllers
 {
-    [Authorize]
     [Route("api/buyers")]
     [ApiController]
     public class BuyersController : ControllerBase
@@ -20,12 +19,14 @@ namespace Cool_WheelsAPI.Controllers
         }
 
         // GET: api/buyers
+        [Authorize]
         [HttpGet]
         public List<Buyer> Get()
         {
             return _buyerRepo.GetAllBuyers();
         }
 
+        [Authorize]
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
@@ -38,6 +39,7 @@ namespace Cool_WheelsAPI.Controllers
             return Ok(matchingBuyer);
         }
 
+        [Authorize]
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
@@ -62,6 +64,7 @@ namespace Cool_WheelsAPI.Controllers
         }
 
         // PATCH api/buyers/<firebaseUserId>
+        [Authorize]
         [HttpPatch("{firebaseUserId}")]
         public IActionResult Put(string firebaseUserId, Buyer buyer)
         {
@@ -83,6 +86,7 @@ namespace Cool_WheelsAPI.Controllers
         }
 
         // DELETE api/buyers/<firebaseUserId>
+        [Authorize]
         [HttpDelete("{firebaseUserId}")]
         public IActionResult Delete(string firebaseUserId)
         {
