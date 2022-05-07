@@ -7,23 +7,23 @@ import BuyerCard from '../Components/BuyerCard';
 import CarCard from '../Components/CarCards';
 import TrackCards from '../Components/TrackCards';
 
-export default function Profile() {
+export default function Profile({ isAdmin }) {
   const [buyer, setBuyer] = useState({});
   const [tracks, setTracks] = useState([]);
   const [cars, setCars] = useState([]);
-  const { id } = useParams();
+  const { firebaseUserId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
     
     if (isMounted) {
-      getBuyer(id).then(setBuyer);
+      getBuyer(firebaseUserId).then(setBuyer);
     }
 
     return () => {
       isMounted = false;
     }
-  }, [id]);
+  }, [firebaseUserId]);
 
   useEffect(() => {
     let isMounted = true;
@@ -55,7 +55,7 @@ export default function Profile() {
   return (
     <div>
       <h1>{buyer.name}'s Profile</h1>
-      <BuyerCard key={buyer.id} buyer={buyer} />
+      <BuyerCard key={buyer.id} buyer={buyer} isAdmin={isAdmin} />
       {tracks ? (
         <>
           <div className="d flex flex-wrap">
