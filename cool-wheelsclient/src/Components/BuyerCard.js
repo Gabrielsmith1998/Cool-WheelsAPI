@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { deleteBuyer } from '../api/data/BuyerData';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, deleteUser } from "firebase/auth";
 import firebase from 'firebase/compat/app';
 
 const firebaseConfig = {
@@ -25,6 +25,8 @@ export default function Buyer({ buyer, setBuyers, isAdmin }) {
     const del = confirm(`Are you sure you want to delete ${buyer.name}?`);
     if (del && method === 'delete') {
       deleteBuyer(buyer).then(setBuyers);
+      const user = auth.currentUser;
+      deleteUser(user);
     }
   };
 
