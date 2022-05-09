@@ -45,9 +45,13 @@ namespace Cool_WheelsAPI.Repositories
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Name = reader.GetString(reader.GetOrdinal("Name")),
                             Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                            BuyerId = reader.GetInt32(reader.GetOrdinal("BuyerId")),
                             ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl")),
                         };
+
+                        if (reader.IsDBNull(reader.GetOrdinal("BuyerId")) == false)
+                        {
+                            track.BuyerId = reader.GetString(reader.GetOrdinal("BuyerId"));
+                        }
 
                         tracks.Add(track);
                     }
@@ -85,9 +89,14 @@ namespace Cool_WheelsAPI.Repositories
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
                                 Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                                BuyerId = reader.GetInt32(reader.GetOrdinal("BuyerId")),
                                 ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl")),
                             };
+
+                            if (reader.IsDBNull(reader.GetOrdinal("BuyerId")) == false)
+                            {
+                                track.BuyerId = reader.GetString(reader.GetOrdinal("BuyerId"));
+                            }
+
                             return track;
                         }
                         else
@@ -116,7 +125,7 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.Parameters.AddWithValue("@price", track.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", track.ImageUrl);
 
-                    if (track.BuyerId.ToString() == null)
+                    if (track.BuyerId == null)
                     {
                         cmd.Parameters.AddWithValue("@buyerId", DBNull.Value);
                     }
@@ -152,8 +161,17 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.Parameters.AddWithValue("@name", track.Name);
                     cmd.Parameters.AddWithValue("@price", track.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", track.ImageUrl);
-                    cmd.Parameters.AddWithValue("@buyerId", track.BuyerId);
                     cmd.Parameters.AddWithValue("@id", track.Id);
+
+
+                    if (track.BuyerId == null)
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", track.BuyerId);
+                    }
 
                     cmd.ExecuteNonQuery();
                 }
