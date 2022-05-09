@@ -26,7 +26,7 @@ export default function PublicRoutes({ isLoggedIn, isAdmin }) {
                 <Route exact path="/newcars" element={isLoggedIn ? <NewCars /> : <Login/>} />
                 <Route exact path="/cars-edit/:id" element={isLoggedIn ? <EditCar /> : <Login/>} />
                 <Route exact path="/cars-single/:id" element={isLoggedIn ? <SingleCarView /> : <Login/>} />
-                <Route exact path="/tracks" element={isLoggedIn ? <Tracks/> : <Login/>} />
+                <Route exact path="/tracks" element={isLoggedIn ? <Tracks isAdmin={isAdmin}/> : <Login/>} />
                 <Route exact path="/tracks-single/:id" element={isLoggedIn ? <SingleTrack /> : <Login/>} />
                 <Route exact path="/tracks-form" element={isLoggedIn ? <TrackForm/> : <Login/>} />
                 <Route exact path="/tracks-edit/:id" element={isLoggedIn ? <EditTrack/> : <Login/>} />

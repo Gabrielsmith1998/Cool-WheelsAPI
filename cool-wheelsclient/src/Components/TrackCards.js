@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { deleteTrack, getSingleTrack, updateTrack } from '../api/data/TrackData';
 import { Link } from 'react-router-dom';
-import { getAuth, onAuthStateChanged, deleteUser } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import firebase from 'firebase/compat/app';
 
 
@@ -19,16 +19,17 @@ const firebaseConfig = {
     }
   });
 
-export default function TrackCards({ tracks, setTracks }) {
+export default function TrackCards({ tracks, setTracks, isAdmin }) {
   const handleDelete = () => {
       deleteTrack(tracks.id).then((track) => setTracks(track));
   };
 
   const setBuyerId = () => {
-    getSingleTrack(tracks.id).then((track) => updateTrack({...track, buyerId: uid}).then((tracks) => setTracks(tracks)))
+      if (window.confirm(`Are you sure you want to buy the ${tracks.name}?`) === true) {
+        getSingleTrack(tracks.id).then((track) => updateTrack({...track, buyerId: uid}).then((tracks) => setTracks(tracks)))
+      }
   }
 
-  console.warn(tracks)
     return (
         <>
         <div className="card">
@@ -36,20 +37,23 @@ export default function TrackCards({ tracks, setTracks }) {
             <div>
                 <h5>{tracks.name}</h5>
                 <p>{'$'}{tracks.price}</p>
-                <Link to={`/tracks-edit/${tracks.id}`}>
-                  <button type="button" className="btn btn-primary edit-btn">Edit</button>
-                </Link>
                 {setTracks ?                 
                 <Link to={`/tracks-single/${tracks.id}`} className="btn btn-success">
                     View
                 </Link> : ('')}
+                {tracks.buyerId === null ? (                
                 <button
                     type="button"
-                    className="btn btn-danger"
+                    className="btn btn-warning"
                     onClick={setBuyerId}
                 >
                     <i className="far fa-edit" /> Buy
-                </button>
+                </button>) : ("")}
+                {isAdmin ? (
+                <>
+                <Link to={`/tracks-edit/${tracks.id}`}>
+                  <button type="button" className="btn btn-primary edit-btn">Edit</button>
+                </Link>              
                 <button
                     type="button"
                     className="btn btn-danger"
@@ -57,6 +61,10 @@ export default function TrackCards({ tracks, setTracks }) {
                 >
                     <i className="far fa-edit" /> Delete
                 </button>
+                </>
+                ) : (
+                  ""
+                )}
             </div>
         </div>
         </>
