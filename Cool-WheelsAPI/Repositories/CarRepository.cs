@@ -42,8 +42,11 @@ namespace Cool_WheelsAPI.Repositories
                             Year = reader.GetString(reader.GetOrdinal("Year")),
                             Price = (double)reader.GetDecimal(reader.GetOrdinal("Price")),
                             ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl")),
-                            BuyerId = reader.GetInt32(reader.GetOrdinal("BuyerId"))
                         };
+                        if (reader.IsDBNull(reader.GetOrdinal("BuyerId")) == false)
+                        {
+                            car.BuyerId = reader.GetString(reader.GetOrdinal("BuyerId"));
+                        }
 
                         cars.Add(car);
                     }
@@ -81,8 +84,11 @@ namespace Cool_WheelsAPI.Repositories
                             Year = reader.GetString(reader.GetOrdinal("Year")),
                             Price = (double)reader.GetDecimal(reader.GetOrdinal("Price")),
                             ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl")),
-                            BuyerId = reader.GetInt32(reader.GetOrdinal("BuyerId"))
                         };
+                        if (reader.IsDBNull(reader.GetOrdinal("BuyerId")) == false)
+                        {
+                            car.BuyerId = reader.GetString(reader.GetOrdinal("BuyerId"));
+                        }
 
                         reader.Close();
                         return car;
@@ -113,7 +119,7 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.Parameters.AddWithValue("@price", car.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", car.ImageUrl);
 
-                    if (car.BuyerId.ToString() == null)
+                    if (car.BuyerId == null)
                     {
                         cmd.Parameters.AddWithValue("@buyerId", DBNull.Value);
                     }
@@ -152,8 +158,16 @@ namespace Cool_WheelsAPI.Repositories
                     cmd.Parameters.AddWithValue("@year", car.Year);
                     cmd.Parameters.AddWithValue("@price", car.Price);
                     cmd.Parameters.AddWithValue("@imageUrl", car.ImageUrl);
-                    cmd.Parameters.AddWithValue("@buyerId", car.BuyerId);
                     cmd.Parameters.AddWithValue("@id", car.Id);
+
+                    if (car.BuyerId == null)
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@buyerId", car.BuyerId);
+                    }
 
                     cmd.ExecuteNonQuery();
                 }
