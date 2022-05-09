@@ -32,7 +32,7 @@ CREATE TABLE Track (
 	[Name] VARCHAR(255) NOT NULL,
 	Price DECIMAL(17, 2) NOT NULL,
 	ImageUrl VARCHAR(255) NOT NULL,
-	BuyerId INTEGER NOT NULL,
+	BuyerId VARCHAR(255),
 );
 
 CREATE TABLE Buyer (
@@ -60,7 +60,11 @@ INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Magen
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Brown', 'Custom Camaro', '1968', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brown-white-camaro-hot-wheels-1545149679.jpg', 3);
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('White', 'Z-Whiz', '1977', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-z-whiz-datsun-jpg-1545151212.jpg', 4);
 
-INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg', 1);
-INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Total Turbo Takeover Track Set', $44.99, 'https://m.media-amazon.com/images/I/61nFfEDFRYL._AC_SX355_.jpg', 2);
-INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('City Robo T-Rex Ultimate Garage', $99.00, 'https://m.media-amazon.com/images/I/81nH0-AetxS._AC_SY355_.jpg', 3);
-INSERT INTO Track ([Name], Price, ImageUrl, BuyerId) VALUES ('Spin Storm Track Set', $54.99, 'https://m.media-amazon.com/images/I/71CqE9eToCL._AC_SX355_.jpg', 4);
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Total Turbo Takeover Track Set', $44.99, 'https://m.media-amazon.com/images/I/61nFfEDFRYL._AC_SX355_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Total Turbo Takeover Track Set', $44.99, 'https://m.media-amazon.com/images/I/61nFfEDFRYL._AC_SX355_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('City Robo T-Rex Ultimate Garage', $99.00, 'https://m.media-amazon.com/images/I/81nH0-AetxS._AC_SY355_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('City Robo T-Rex Ultimate Garage', $99.00, 'https://m.media-amazon.com/images/I/81nH0-AetxS._AC_SY355_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Spin Storm Track Set', $54.99, 'https://m.media-amazon.com/images/I/71CqE9eToCL._AC_SX355_.jpg');
+INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Spin Storm Track Set', $54.99, 'https://m.media-amazon.com/images/I/71CqE9eToCL._AC_SX355_.jpg');
