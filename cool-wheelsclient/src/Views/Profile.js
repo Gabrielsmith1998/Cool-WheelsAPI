@@ -49,7 +49,7 @@ export default function Profile({ isAdmin }) {
     };
   }, []);
 
-  const buyersTracks = tracks.filter((allTracks) => allTracks.buyerId === buyer.id)
+  const buyersTracks = tracks.filter((allTracks) => allTracks.buyerId === firebaseUserId)
   const buyersCars = cars.filter((allCars) => allCars.buyerId === buyer.id)
 
   return (
