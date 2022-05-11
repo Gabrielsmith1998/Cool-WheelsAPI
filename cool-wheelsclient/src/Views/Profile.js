@@ -50,7 +50,7 @@ export default function Profile({ isAdmin }) {
   }, []);
 
   const buyersTracks = tracks.filter((allTracks) => allTracks.buyerId === buyer.id)
-  const buyersCars = cars.filter((allCars) => allCars.buyerId === buyer.id)
+  const buyersCars = cars.filter((allCars) => allCars.buyerId === firebaseUserId)
 
   return (
     <div>
