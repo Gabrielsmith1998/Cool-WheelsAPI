@@ -16,21 +16,21 @@ export default function Login({ isLoggedIn }) {
   };
 
   return (
-    <>
-      <div className="text-center mt-5">
+    <div className="login-container">
+      <div className="text-center">
         <h1>Welcome! Login!</h1>
         <Form onSubmit={loginSubmit}>
           <fieldset>
             <FormGroup>
-              <Label for="email">Email</Label>
-              <Input id="email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
+              <Label for="login-email">Email</Label>
+              <Input id="login-email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
             </FormGroup>
             <FormGroup>
-              <Label for="password">Password</Label>
-              <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+              <Label for="login-password">Password</Label>
+              <Input id="login-password" type="password" onChange={e => setPassword(e.target.value)} />
             </FormGroup>
             <FormGroup>
-              <Button>Login</Button>
+              <Button id="login-button">Login</Button>
             </FormGroup>
             <em>
               Not registered? <Link to={'/register'}>Register</Link>
@@ -38,6 +38,6 @@ export default function Login({ isLoggedIn }) {
           </fieldset>
         </Form>
       </div>
-    </>
+    </div>
   );
 }
