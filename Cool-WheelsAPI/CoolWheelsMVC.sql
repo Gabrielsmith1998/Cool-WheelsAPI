@@ -49,13 +49,11 @@ CREATE TABLE Buyer (
 );
 
 INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('e63vr1XHHigSVCLoDlJs2L0HdnV2', 'Albert Chittaphong', 'albertchitta', 'albert123@gmail.com', 'Albert About Me', 'https://bootdey.com/img/Content/avatar/avatar2.png', 'admin');
-INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('Y14CjkUJgiUj6R0GgUO6VkCt4tw2', 'Klay Thacker', 'KlayTT', 'klay123@gmail.com', 'Klay About Me', 'https://bootdey.com/img/Content/avatar/avatar6.png', 'admin');
 INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('XlTocXr2MKQ05Emi9CpI7aIfd073', 'Gabriel Smith', 'Gabrielsmith1998', 'gabriel123@gmail.com', 'Gabriel About Me', 'https://bootdey.com/img/Content/avatar/avatar4.png', 'user');
 INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('AVukDXArGdfEYdDn6vbmpJ99Hbu1', 'Nathan Blackman', 'NathanBlackman', 'nathan123@gmail.com', 'Nathan About Me', 'https://bootdey.com/img/Content/avatar/avatar5.png', 'user');
 INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('AVukDXArGdfEYdDn6vbmpJ99Hbu2', 'Nathan Blackman', 'NathanBlackman', 'nathan123@gmail.com', 'Nathan About Me', 'https://bootdey.com/img/Content/avatar/avatar5.png', 'user');
 
 
-INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg', 1);
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg', 1);
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Magenta', 'Rodger Dodger', '1974', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roger-dodger-magenta-1545149164.jpg', 2);
 INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Brown', 'Custom Camaro', '1968', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brown-white-camaro-hot-wheels-1545149679.jpg', 3);
