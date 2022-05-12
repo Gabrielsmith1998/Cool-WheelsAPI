@@ -66,7 +66,7 @@ export default function BuyerForm({ buyer = {} }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="buyer-form">
       <FormGroup>
         <Label for="name">Name</Label>
         <Input
@@ -118,7 +118,7 @@ export default function BuyerForm({ buyer = {} }) {
       <FormGroup>
         <Label for="about">About</Label>
         <Input
-          type="text"
+          type="textarea"
           name="about"
           id="about"
           placeholder="Add an About"
@@ -127,7 +127,7 @@ export default function BuyerForm({ buyer = {} }) {
           required
         />
       </FormGroup>
-      <Button type="submit" className="btn btn-success">
+      <Button type="submit" className="btn btn-success" id="buyer-form-btn">
         {buyer.id ? 'Update' : 'Submit'}
       </Button>
     </Form>

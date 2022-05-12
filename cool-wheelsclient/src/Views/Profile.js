@@ -53,33 +53,34 @@ export default function Profile({ isAdmin }) {
   const buyersTracks = tracks.filter((allTracks) => allTracks.buyerId === firebaseUserId)
 
   return (
-    <div>
-      <h1>{buyer.name}'s Profile</h1>
+    <div className="profile">
       <BuyerCard key={buyer.id} buyer={buyer} isAdmin={isAdmin} />
-      {tracks ? (
-        <>
-          <div className="d flex flex-wrap">
-            <h4>{buyer.name}'s Tracks</h4>
-            {buyersTracks.map((tracks) => (
-              <TrackCards tracks={tracks} key={tracks.id} setTracks={setTracks} />
-            ))}
+      <div className="buyer-collection">
+        {tracks ? (
+          <div className="buyer-tracks">
+            <div className="d flex flex-wrap buyer-track">
+              <h4>{buyer.name}'s Tracks</h4>
+              {buyersTracks.map((tracks) => (
+                <TrackCards tracks={tracks} key={tracks.id} setTracks={setTracks} />
+              ))}
+            </div>
           </div>
-        </>
-      ) : (
-        ''
-      )}
-      {cars ? (
-        <>
-          <div className="d flex flex-wrap">
-            <h4>{buyer.name}'s Cars</h4>
-            {buyersCars.map((car) => (
-              <CarCard car={car} key={car.id} setCars={setCars} />
-            ))}
+        ) : (
+          ''
+        )}
+        {cars ? (
+          <div className="buyer-cars">
+            <div className="d flex flex-wrap buyer-car">
+              <h4>{buyer.name}'s Cars</h4>
+              {buyersCars.map((car) => (
+                <CarCard car={car} key={car.id} setCars={setCars} />
+              ))}
+            </div>
           </div>
-        </>
-      ) : (
-        ''
-      )}
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 }

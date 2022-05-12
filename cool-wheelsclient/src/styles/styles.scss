@@ -1,9 +1,14 @@
 @charset 'utf-8';
 
 // Import styles
+@import 'register';
+@import 'login';
 @import 'buyers';
 @import 'cars';
+@import 'buyer-form';
+@import 'profile';
 
 html, body {
   margin: 0;
+  background-color: #FEA500;
 }

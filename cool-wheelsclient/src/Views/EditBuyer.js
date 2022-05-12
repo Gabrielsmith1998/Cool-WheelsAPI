@@ -20,8 +20,8 @@ export default function EditBuyer() {
   }, [firebaseUserId]);
 
   return (
-    <div>
-      <h1>Edit {editBuyer.name}'s Information</h1>
+    <div className="buyer-form-container">
+      <h1 className="edit-buyer-header">Edit {editBuyer.name}'s Information</h1>
       <BuyerForm buyer={editBuyer} />
     </div>
   );

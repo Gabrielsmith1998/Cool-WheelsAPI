@@ -1,0 +1,24 @@
+.buyer-form-container {
+  background-color: #FEA500;
+}
+
+.edit-buyer-header {
+  background-color: white;
+}
+
+.buyer-form {
+  width: 40%;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+
+  @media only screen and (max-width: 1024px) {
+    width: 60%;
+  }
+}
+
+#buyer-form-btn {
+  display: block;
+  margin: 0 auto;
+}

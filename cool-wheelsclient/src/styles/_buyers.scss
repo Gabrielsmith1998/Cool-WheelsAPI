@@ -2,10 +2,29 @@
 #buyer-container {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-  margin: 24px auto;
+  justify-content: center;
+  background-color: #FEA500;
 }
 
-#buyer-card {
-  width: 500px;
+.buyer-card {
+  width: 400px;
+  height: 600px;
+  margin: 20px;
+}
+
+.buyer-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+#buyer-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-btn, .buyer-edit-btn, .buyer-delete-btn {
+  width: 100px;
+  margin: 0 10px;
 }

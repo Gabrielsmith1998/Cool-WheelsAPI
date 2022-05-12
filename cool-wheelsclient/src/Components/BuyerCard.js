@@ -32,12 +32,13 @@ export default function Buyer({ buyer, setBuyers, isAdmin }) {
 
   return (
     <div>
-      <div className="card" id="buyer-card">
+      <div className="card buyer-card">
         <img className="card-img-top" src={buyer.image} alt={buyer.name} />
-        <div className="card-body">
+        <div className="card-body buyer-body">
           <h4 className="card-title">{buyer.name}</h4>
           <h5>@{buyer.userName} | {buyer.email}</h5>
           <p className="card-text">{buyer.about}</p>
+          <div className="buyer-footer">
           {setBuyers ? (
             <Link to={`/buyers/${buyer.firebaseUserId}`}>
               <button type="button" className="btn btn-primary profile-btn">Profile</button>
@@ -48,13 +49,14 @@ export default function Buyer({ buyer, setBuyers, isAdmin }) {
           {buyer.firebaseUserId === uid || isAdmin ? (
           <>
             <Link to={`/edit-buyer/${buyer.firebaseUserId}`}>
-              <button type="button" className="btn btn-primary edit-btn">Edit</button>
+              <button type="button" className="btn btn-primary buyer-edit-btn">Edit</button>
             </Link>
-            <button type="button" className="btn btn-danger delete-btn" onClick={() => handleClick('delete')}>Delete</button>
+            <button type="button" className="btn btn-danger buyer-delete-btn" onClick={() => handleClick('delete')}>Delete</button>
           </>
           ) : (
             ""
           )}
+          </div>
         </div>
       </div>
     </div>
