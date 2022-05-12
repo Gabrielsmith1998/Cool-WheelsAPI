@@ -24,7 +24,7 @@ CREATE TABLE Car (
 	[Year] VARCHAR(255) NOT NULL,
 	Price DECIMAL(17, 2) NOT NULL,
 	ImageUrl VARCHAR(255) NOT NULL,
-	BuyerId INTEGER NOT NULL,
+	BuyerId VARCHAR(255),
 );
 
 CREATE TABLE Track (
@@ -55,10 +55,10 @@ INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Rol
 INSERT INTO Buyer (FirebaseUserId, [Name], UserName, Email, About, [Image], [Role]) VALUES ('AVukDXArGdfEYdDn6vbmpJ99Hbu2', 'Nathan Blackman', 'NathanBlackman', 'nathan123@gmail.com', 'Nathan About Me', 'https://bootdey.com/img/Content/avatar/avatar5.png', 'user');
 
 
-INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg', 1);
-INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Magenta', 'Rodger Dodger', '1974', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roger-dodger-magenta-1545149164.jpg', 2);
-INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('Brown', 'Custom Camaro', '1968', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brown-white-camaro-hot-wheels-1545149679.jpg', 3);
-INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl, BuyerId) VALUES ('White', 'Z-Whiz', '1977', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-z-whiz-datsun-jpg-1545151212.jpg', 4);
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl) VALUES ('Red', 'Ferrari 312P', '1970', $5000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-ferrari-hot-wheel-white-1545153926.jpg');
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl) VALUES ('Magenta', 'Rodger Dodger', '1974', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/roger-dodger-magenta-1545149164.jpg');
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl) VALUES ('Brown', 'Custom Camaro', '1968', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brown-white-camaro-hot-wheels-1545149679.jpg');
+INSERT INTO Car (Color, [Name], [Year], Price, ImageUrl) VALUES ('White', 'Z-Whiz', '1977', $3000.00, 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-z-whiz-datsun-jpg-1545151212.jpg');
 
 INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg');
 INSERT INTO Track ([Name], Price, ImageUrl) VALUES ('Criss Cross Crash Track Set', $54.99, 'https://m.media-amazon.com/images/I/71Ed96clU1L._AC_SX679_.jpg');
