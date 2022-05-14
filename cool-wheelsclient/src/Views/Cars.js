@@ -14,9 +14,11 @@ export default function Cars({ isAdmin }) {
         return () => { isMounted = false; }
     }, []);
 
+    const nullCars = cars.filter((allCars) => allCars.buyerId === null)
+
     return (
         <div className="d-flex flex-wrap">
-            {cars.map((car) => (
+            {nullCars.map((car) => (
                 <CarCards
                     key={car.id}
                     car={car}
