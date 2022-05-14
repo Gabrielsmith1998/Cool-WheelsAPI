@@ -1,0 +1,16 @@
+.login-container {
+  background-color: #FEA500;
+}
+
+#login-email, #login-password {
+  width: 20%;
+  margin: auto;
+
+  @media only screen and (max-width: 1024px) {
+    width: 40%;
+  }
+}
+
+#login-button {
+  background-color: #1DCD00;
+}
